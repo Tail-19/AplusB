@@ -24,10 +24,4 @@ public class AplusbController {
     public String getAB() {
         return "aplusb";
     }
-
-//    public ModelAndView inputAB() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("/Users/zhenghanlu/Desktop/aplusb/src/main/java/com/example/aplusb/aplusb.html");
-//        return modelAndView;
-//    }
 }
