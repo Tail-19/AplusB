@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AplusbController {
@@ -38,5 +39,12 @@ public class AplusbController {
         }
         System.out.println(request.getSession().getAttribute("a").toString());
         return request.getSession().getAttribute("a").toString();
+    }
+
+    @GetMapping("/session")
+    @ResponseBody
+    public String session(HttpSession session){
+        session.setAttribute("a", 123);
+        return session.getAttribute("a").toString();
     }
 }
