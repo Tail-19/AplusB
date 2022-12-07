@@ -3,8 +3,9 @@ package com.example.aplusb_1;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import javax.servlet.http.HttpServletRequest;
 
+@Controller
 public class AplusbController {
 //    如果传的参数是@RequestBody ，多参或者传对象的情况下使用@PostMapping注解
 //    无参，@RequestParam 和@PathVaiable的情况下使用GetMapping
@@ -23,5 +24,19 @@ public class AplusbController {
     @GetMapping("/calc/sum3")
     public String getAB() {
         return "aplusb";
+    }
+
+    @GetMapping("/acc")
+    @ResponseBody
+    public String acc(@RequestParam("param") Integer para, HttpServletRequest request){
+        if (request.getSession().getAttribute("a") == null){
+            System.out.println("hello");
+            request.getSession().setAttribute("a", para);
+        } else{
+            int b = (int) request.getSession().getAttribute("a");
+            request.getSession().setAttribute("a", para+b);
+        }
+        System.out.println(request.getSession().getAttribute("a").toString());
+        return request.getSession().getAttribute("a").toString();
     }
 }
